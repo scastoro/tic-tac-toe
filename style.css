@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Put display continer Styling Below */
+
+/* Gameboard container styling */
+.container .gameboard-container {
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+  border: 3px solid gray;
+  border-radius: 6px;
+}
+
+.container .gameboard-container .row {
+  display: flex;
+}
+
+.container .gameboard-container .row:nth-of-type(even) {
+  border-top: 5px solid black;
+  border-bottom: 5px solid black;
+}
+
+.container .gameboard-container .row .cell {
+  font-size: 100px;
+  padding: 4px;
+}
+
+.container .gameboard-container .row .cell:nth-of-type(even){
+  border-left: 5px solid black;
+  border-right: 5px solid black;
+
+}
