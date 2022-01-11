@@ -13,12 +13,26 @@ body {
   justify-content: center;
   align-items: center;
 }
+/* Form Styling */
+.container .form-container {
+  display: none;
+  margin-top: 15px;
+}
 
-/* Put display continer Styling Below */
+.container .form-container .form-entry {
+  margin: 5px 0;
+}
+
+/* Display container Styling  */
+
+.container .display-container .display-header {
+  margin-bottom: 25px;
+  font-weight: bold;
+}
 
 /* Gameboard container styling */
 .container .gameboard-container {
-  display: flex;
+  display: none;
   flex-direction: column;
   padding: 4px;
   border: 3px solid gray;
