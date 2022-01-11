@@ -6,12 +6,6 @@ const gameBoard = (function() {
     ['', '', ''],
     ['', '', '']
   ];
-  let testBoard = [
-    ['X', 'O', 'X'],
-    ['O', 'X', 'O'],
-    ['O', 'O', 'X']
-  ];
-  
   // Probably want a function to insert an X or O into a particular point in the array
   // This function should probably be exposed
   function updateBoard(letter, yIndex, xIndex){
@@ -27,10 +21,77 @@ const gameBoard = (function() {
     // Return test board to check ui
     return board;
   }
+  // Build logic to determine win or tie
+  // Can manually check for each win conditon
+  // Such as if board[0][0] === x && board[0][1] === x && board[0][3] === x  
+  // Then win condition is met
+  // Maybe use switch statement if going down this path
+  // Should be eight win conditions per x or o
+  // Create three functions, checkXWin, checkYWin, and checkTie
+  function checkXWin(){
+    switch (true) {
+      case (board[0][0] === 'X' && board[0][1] === 'X' && board[0][2] === 'X'):
+        return true;
+      case (board[1][0] === 'X' && board[1][1] === 'X' && board[1][2] === 'X'):
+        return true;
+      case (board[2][0] === 'X' && board[2][1] === 'X' && board[2][2] === 'X'):
+        return true;
+      case (board[0][0] === 'X' && board[1][0] === 'X' && board[2][0] === 'X'):
+        return true;
+      case (board[0][1] === 'X' && board[1][1] === 'X' && board[2][1] === 'X'):
+        return true;
+      case (board[0][2] === 'X' && board[1][2] === 'X' && board[2][2] === 'X'):
+        return true;
+      case (board[0][0] === 'X' && board[1][1] === 'X' && board[2][2] === 'X'):
+        return true;
+      case (board[2][0] === 'X' && board[1][1] === 'X' && board[2][0] === 'X'):
+        return true;
+      default:
+        return false
+    }
+  }
+  function checkOWin(){
+    switch (true) {
+      case (board[0][0] === 'O' && board[0][1] === 'O' && board[0][2] === 'O'):
+        return true;
+      case (board[1][0] === 'O' && board[1][1] === 'O' && board[1][2] === 'O'):
+        return true;
+      case (board[2][0] === 'O' && board[2][1] === 'O' && board[2][2] === 'O'):
+        return true;
+      case (board[0][0] === 'O' && board[1][0] === 'O' && board[2][0] === 'O'):
+        return true;
+      case (board[0][1] === 'O' && board[1][1] === 'O' && board[2][1] === 'O'):
+        return true;
+      case (board[0][2] === 'O' && board[1][2] === 'O' && board[2][2] === 'O'):
+        return true;
+      case (board[0][0] === 'O' && board[1][1] === 'O' && board[2][2] === 'O'):
+        return true;
+      case (board[2][0] === 'O' && board[1][1] === 'O' && board[2][0] === 'O'):
+        return true;
+      default:
+        return false
+    }
+  }
+
+  function checkTie(){
+    for (let i = 0; i < board.length; i++) {
+      for(let j = 0; j < board[i].length; j++){
+        if(!board[i][j]){
+          return false
+        }
+      }
+      
+    }
+    return true;
+  }
 
   return {
     updateBoard: updateBoard,
-    getBoardState: getBoardState
+    getBoardState: getBoardState,
+    checkXWin: checkXWin,
+    checkOWin: checkOWin,
+    checkTie: checkTie
+
   };
 })();
 
